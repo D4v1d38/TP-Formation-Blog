@@ -1,0 +1,30 @@
+<main>
+    
+    <section>
+        <div class="container">
+            <h1>Liste des Articles</h1>
+            <?php foreach($dataArticles as $item): ?>
+                <ul class="list-articles">
+                    
+                    <li><a href="controllers/article.php?id_article=<?=htmlspecialchars($item['id_article']) ?>"><?=htmlspecialchars($item['titre'])?></a></li>
+                    
+                    <li><img class="img-article-index" src="./images/<?=htmlspecialchars($item['image']) ?>" alt="<?=htmlspecialchars($item['image']) ?>"></li>
+                  
+                    <li><small><?="ecrit par : ".htmlspecialchars($item['prenom']).' '.htmlspecialchars($item['nom'].',  le '.htmlspecialchars($item['date']))?></small></li>
+                    
+                    <li><?= htmlspecialchars(mb_strimwidth($item['contenu'],0,30," [...]")) ?></li>
+                    
+
+                </ul>
+            <?php endforeach; ?>
+        </div>
+        
+    </section>
+    
+    <aside id="target" class="container">
+        
+    </aside>
+    
+</main>
+
+

@@ -1,0 +1,12 @@
+
+<h3>Les derniers commentaires</h3>
+
+<?php foreach($dataCom as $item):  ?>
+    <li><a href="./controllers/article.php?id_article=<?= $item['id_article'] ?>"> <?= $item['titre'] ?> </a> </li>
+    <li> <?= $item['contenu'] ?> </li>
+    <li><?= "par".'<span class="pseudo-color">' .$item['pseudo'] .'</span></li>' ?>
+    
+<?php endforeach;  ?>
+    
+
+

@@ -1,0 +1,49 @@
+
+<main class="container">
+    
+    <section class="articles">
+        <div class="header-article">
+            <h2><?= htmlspecialchars($articleSelect['titre']) ?></h2>
+            <small><?= "écrit par: " .htmlspecialchars($articleSelect['prenom'])." ".htmlspecialchars($articleSelect['nom']) ?></small>
+            <small><?= "le : " .htmlspecialchars($articleSelect['date']) ?></small>
+        </div>
+        <img src="../images/<?=htmlspecialchars($articleSelect['image'])?>" alt="une image" >
+        <p><?= htmlspecialchars($articleSelect['contenu']) ?></p>
+    
+    </section>
+        
+    <section class="commentaires">    
+        <h3>-Commentaires-</h3>
+            <?php foreach($commentsArticle as $commentsItem ):  ?>
+                <small><?= "par: ".htmlspecialchars($commentsItem["pseudo"]) ?></small>
+                <small><?= "le : " .htmlspecialchars($commentsItem['date']) ?></small>
+                <p><?= htmlspecialchars($commentsItem["contenu"]) ?></p>
+            <?php endforeach; ?>
+    </section>
+    
+    <section>
+
+        <form class="form" action="../controllers/ajout_comment.php" method="post">
+            <h4>Publier un commentaire :</h4>
+            <input type="hidden" name ="id_article" value= "<?= htmlspecialchars($idArticle) ?>" />
+            
+            <div>
+                <label for="pseudo">Entrez votre pseudo:</label>
+                <input type="text" name="pseudo" placeholder="pseudo"/>                
+            </div>
+            
+            <div>
+                <label for="messages">Votre commentaire:</label>
+                <textarea  name="messages" placeholder="votre commentaire" ></textarea>
+            </div>
+            
+            <div>
+                <!--<input type="submit" name="Envoyer"/>-->
+                <button type="submit" name="enregistrer" >Enregistrer</button>
+            </div>
+
+        </form>
+    </section>
+
+</main>
+

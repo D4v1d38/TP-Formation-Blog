@@ -1,0 +1,61 @@
+<?php if(isset($_SESSION['pseudoAdmin'])): ?>
+    <main>
+    
+        <section>
+            
+            <div class="container">
+               
+                <form class="form" method="post" action="../controllers/ajout_article.php" enctype="multipart/form-data">
+                    
+                    <h2>Rediger un nouvel article</h2>
+                
+                    <div>
+                        <label for="titre">Titre : </label>
+                        <input type="text" name="titre" placeholder="Titre de l'article"/>
+                    </div>
+                    
+                     <div>
+                        <label for="image">choisir une image : </label>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="300000"  />
+                        <input type="file" name="image" />
+                    </div>
+                    
+                    
+                    <div>
+                        <label for="contenu">Article : </label>
+                        <textarea type="text" name="contenu" cols="33" rows="10" placeholder="votre article ... "/></textarea>
+                    </div>
+                    
+                    <div>
+                       
+                        <label for="choix-auteur">Auteur : </label>
+                        <select name="choix-auteur"/>
+                             <?php foreach($auteurs as $auteur): ?>
+                             <option value=<?= htmlspecialchars($auteur['id_auteur']) ?> ><?=htmlspecialchars($auteur['prenom'])." ".htmlspecialchars($auteur['nom'])?> </option>
+                             <?php endforeach; ?>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="choix-categorie">Catégorie : </label>
+                        <select name="choix-categorie"/>
+                            <?php foreach($categories as $categorie) : ?>
+                            <option value="<?= htmlspecialchars($categorie['id_categorie']) ?>"><?=htmlspecialchars($categorie['nom_cat']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" name="enregistrer" >Enregistrer</button>
+                        <button type="reset" name="annuler" >Annuler</button>
+                        <!--<input type="reset" name="annuler" value="Annuler"/>-->
+                    </div>
+                    
+                </form>
+            </div>
+            
+        </section>
+    </main>
+<?php else: ?>
+    <?php header('location:../controllers/admin.php') ?>   
+<?php endif; ?>

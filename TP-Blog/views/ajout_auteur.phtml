@@ -1,0 +1,34 @@
+<?php if(isset($_SESSION['pseudoAdmin'])): ?>
+    <main>
+        
+        <section>
+            
+            <div class="container" >
+                
+                <form class="form" method="POST" action="ajout_auteur.php" >
+                    <h2>Ajouter un nouvel auteur</h2>
+                    
+                    <div>
+                        <label for="prenom">Nom de l'auteur: </label>
+                        <input type="text" name="prenom" placeholder="prénom"/>
+                    </div>
+                    
+                    <div>
+                        <label for="Nom">prénom de l'auteur: </label>
+                        <input type="text" name="nom" placeholder="Nom"/>
+                    </div>
+                    
+
+                    <div>
+                       <button type="submit" name="enregistrer">Enregistrer</button>
+                    </div>
+                    
+                </form>
+                
+            </div>
+        </section>
+        
+    </main>
+<?php else: ?>
+    <?php header('location:../controllers/admin.php'); ?>
+<?php endif; ?>

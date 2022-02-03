@@ -1,0 +1,64 @@
+<main>
+    
+    <?php if(!isset($_SESSION['pseudoAdmin'])): ?>
+        
+        <form class="form" action="admin.php" method="POST" >
+            
+            <h2>Administration</h2>
+            <h3>Formulaire d'identification</h3>
+            <div>
+                <label for="pseudo-admin">Entrez votre pseudo : </label>
+                <input type="text" name="pseudo-admin"/>
+            </div>
+            
+            <div>
+                <label for="pwd-admmin">Entrez cotre Mot de passe</label>
+                <input type="password" name="pwd-admin"/>
+            </div>
+            
+            <div>
+              <input type="submit" value="Connexion"/>  
+            </div>
+            
+        </form>
+    
+    <?php else: ?>
+    
+        <h1>Panneau d'administration</h1>
+            <div class="admin-command">
+             <button><a href="ajout_article.php">Rédiger un nouvel article</a></button>
+             <button><a href="ajout_categorie.php">Ajouter une catégorie</a></button>
+             <button><a href="ajout_auteur.php">Ajouter un auteur</a></button>
+             <button><a href="new_user.php">Ajouter un Admin</a></button>
+            </div>
+       
+        
+        <table class=" table table-primary table-striped">
+            <tr>
+                <th>Titre</th>
+                <th>Article</th>
+                <th>Auteur</th>
+                <th>Catégorie</th>
+                <th>Image</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+            
+            <?php foreach($listeDesArticles as $listeItem): ?>
+            
+            <tr>
+                <td><?= htmlspecialchars($listeItem['titre']) ?></td>
+                <td><?= htmlspecialchars(substr($listeItem['contenu'],0,100)) ?></td>
+                <td><?= htmlspecialchars($listeItem['nom'])." ".htmlspecialchars($listeItem['prenom']) ?></td>
+                <td><?= htmlspecialchars($listeItem["nom_cat"]) ?></td>
+                <td><?= htmlspecialchars($listeItem["image"]) ?></td>
+                <td><a href="modif_article.php?id_article=<?= htmlspecialchars($listeItem['id_article']) ?>"><i class="fas fa-pen"></i></a></td>
+                <td><a href="supprimer_article.php?id_article=<?= htmlspecialchars($listeItem['id_article']) ?>"><i class="fas fa-times"></i></a></td>
+            </tr>
+            
+            <?php endforeach; ?>
+        </table>
+    
+    <?php endif; ?>
+    
+</main>

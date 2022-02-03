@@ -1,0 +1,28 @@
+<?php if(isset($_SESSION['pseudoAdmin'])): ?>
+    <main>
+        
+        <section>
+            <div class="container" >
+                
+                <form class="form" method="POST" action="ajout_categorie.php" >
+                    <h2>Ajouter une nouvelle catégorie</h2>
+                    
+                    <div>
+                        <label for="user">Nom de la categorie : </label>
+                        <input type="text" name="categorie" placeholder="categorie"/>
+                    </div>
+                    
+
+                    <div>
+                       <button type="submit" name="enregistrer">Enregistrer</button>
+                    </div>
+                    
+                </form>
+                
+            </div>
+        </section>
+        
+    </main>
+<?php else: ?>
+    <?php header('location:../controllers/admin.php'); ?>
+<?php endif; ?>
